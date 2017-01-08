@@ -1,0 +1,17 @@
+# build image
+FROM dylanninin/gifsicle:lossy
+EXPORT /usr/local/bin/gifsicle
+
+# build image
+FROM msoap/shell2http:latest
+EXPORT /app/shell2http
+
+# run image
+FROM alpine
+RUN mkdir /app
+IMPORT gifsicle /bin/gifsicle
+IMPORT shell2http /bin/shell2http
+ADD ./main.sh /app/main.sh
+EXPOSE 9100
+CMD ["/app/main.sh"]
+TAG dylanninin/giflossy:v1

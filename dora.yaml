@@ -1,0 +1,11 @@
+
+---
+ufopname: giflossy # ufop名称，使用qdoractl list命令获取可用image列表
+verstr: v1 # 当前版本名称
+image: giflossy:v1 # 使用的image，需要带上tag,使用qdoractl image命令获取可用image列表
+desc:  # 描述信息，可选
+flavor: C1M1 # 运行实例的机器配置，不同的配置单实例价格不一样，使用qdoractl flavor命令获取可用的配置列表
+health_check:
+  path: "/health" # 健康检查的url相对路径，平台会试图通过访问这个url来判断某个实例是否存活，返回200即可
+  timeout: 3 # 调用监控检查API的时间间隔，默认3s
+log_file_paths: [] # OPTIONAL 用户日志路径，会采集该路径下的用户日志，系统也会对该目录下的已采集日志进行自动回收。
