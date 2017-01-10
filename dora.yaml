@@ -1,8 +1,8 @@
 
 ---
 ufopname: giflossy # ufop名称，使用qdoractl list命令获取可用image列表
-verstr: v1 # 当前版本名称
-image: giflossy:v1 # 使用的image，需要带上tag,使用qdoractl image命令获取可用image列表
+verstr: v2 # 当前版本名称
+image: giflossy:v2 # 使用的image，需要带上tag,使用qdoractl image命令获取可用image列表
 desc:  # 描述信息，可选
 flavor: C1M1 # 运行实例的机器配置，不同的配置单实例价格不一样，使用qdoractl flavor命令获取可用的配置列表
 health_check:
