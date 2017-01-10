@@ -7,7 +7,7 @@ Usage:
     path2opt.py [-h | --path=<p>]
 
 Options:
-    -p --path=<p>   Input path.
+    -p --path=<p>   Input path [default: /optimize/3/lossy/80/interlace].
     -h --help       Show this screen.
 
 Example:
@@ -33,7 +33,7 @@ def is_opt(name):
 if __name__ == '__main__':
     opts = {}
     args = docopt(__doc__)
-    path = args.get('--path') or '/optimize/3/lossy/80/interlace'
+    path = args.get('--path') or ''
     path = path.strip('/').strip('/')
     parts = path.split('/')
     l = len(parts)
