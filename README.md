@@ -35,15 +35,15 @@ Started
     - crop/X,Y+WxH            or crop/X,Y-X2,Y2.
                                 Crop the image.
     - rotate/DEGREE           Rotate the image: 90,180,270.
-    - `examples`
-      - lossy/80
-      - /optimize/3/lossy/80/interlace
-      - /resize/400x400/optimize/3/lossy/80/interlace
-      - /resize-fit/400x400/optimize/3/lossy/80/interlace
-      - /resize-colors/32/optimize/3/lossy/80/interlace
-      - /scale/1.5,1.5/optimize/3/lossy/80/interlace
-      - /crop/400,400/optimize/3/lossy/80/interlace
-      - /rotate/90/optimize/3/lossy/80/interlace
+  - `options` example:
+    - /lossy/80
+    - /optimize/3/lossy/80/interlace
+    - /resize/400x400/optimize/3/lossy/80/interlace
+    - /resize-fit/400x400/optimize/3/lossy/80/interlace
+    - /resize-colors/32/optimize/3/lossy/80/interlace
+    - /scale/1.5,1.5/optimize/3/lossy/80/interlace
+    - /crop/400,400/optimize/3/lossy/80/interlace
+    - /rotate/90/optimize/3/lossy/80/interlace
 
 
 Qiniu ufop
