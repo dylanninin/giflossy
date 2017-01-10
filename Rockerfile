@@ -7,11 +7,15 @@ FROM msoap/shell2http:latest
 EXPORT /app/shell2http
 
 # run image
-FROM alpine
+FROM frolvlad/alpine-python3
 RUN mkdir /app
+RUN pip install docopt
 IMPORT gifsicle /bin/gifsicle
 IMPORT shell2http /bin/shell2http
 ADD ./main.sh /app/main.sh
+ADD ./opt2cli.py /app/opt2cli.py
+ADD ./path2opt.py /app/path2opt.py
 EXPOSE 9100
 CMD ["/app/main.sh"]
-TAG dylanninin/giflossy:v1
+PUSH dylanninin/giflossy:v2
+PUSh dylanninin/giflossy:latest
