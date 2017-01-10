@@ -12,25 +12,39 @@ Started
 
     ```shell
     ls -hl *.gif
-    -rw-r--r--  1 dylanninin  staff    10M Jan  8 10:37 demo.gif
-    -rw-r--r--  1 dylanninin  staff   1.9M Jan  8 11:04 lossy.gif
+    -rw-r- r-   1 dylanninin  staff    10M Jan  8 10:37 demo.gif
+    -rw-r- r-   1 dylanninin  staff   1.9M Jan  8 11:04 lossy.gif
     ```
 
-- handlers: a simple http wrapper on gifsicle executable binary, see [main.sh](main.sh)
-  - info: `http://localhost:9100/info?url=http://bit.ly/2iP176E`
-  - size, info: `http://localhost:9100/sinfo?url=http://bit.ly/2iP176E`
-  - color, info: `http://localhost:9100/cinfo?url=http://bit.ly/2iP176E`
-  - extension, info: `http://localhost:9100/xinfo?url=http://bit.ly/2iP176E`
-  - default handler(optimize/lossy compressed): `http://localhost:9100/handler?url=http://bit.ly/2iP176E`
-  - resize-fit: `http://localhost:9100/resizefit?url=http://bit.ly/2iP176E&m=600x600`
-  - resize: `http://localhost:9100/resize?url=http://bit.ly/2iP176E&m=600x600`
-  - scale: `http://localhost:9100/scale?url=http://bit.ly/2iP176E&m=XFACTOR[xYFACTOR]`
-  - lossy: `http://localhost:9100/lossy?url=http://bit.ly/2iP176E&m=80`
-  - optimize: `http://localhost:9100/optimze?url=http://bit.ly/2iP176E&m=3`
-  - interlaced: `http://localhost:9100/interlace?url=http://bit.ly/2iP176E`
-  - crop: `http://localhost:9100/crop?url=http://bit.ly/2iP176E&m=400,400`
-  - rotate: `http://localhost:9100/rotate?url=http://bit.ly/2iP176E&m=90`
-  - help: `http://localhost:9100/help`
+- handler: a simple http wrapper on gifsicle executable binary, see [main.sh](main.sh)
+  - syntax: `http://localhost:9100/handler?url={gif_url}&opt={options}`
+  - `gif_url`: the url of a gif
+  - `options`: like `/opt_1/val_1/opt_2/opt_3/val_3`. available options:
+    - info                    Print info about input GIFs.
+    - sinfo                   info plus compression information.
+    - cinfo                   info plus colormap details.
+    - xinfo                   info plus extension details.
+    - resize/WxH              Resize the output GIF to WxH.
+    - resize-fit/WxH          Resize if necessary to fit within WxH.
+    - resize-colors/N         Resize can add new colors up to N.
+    - scale/XFACTORxYFACTOR   Scale the output GIF by XFACTORxYFACTOR.
+    - lossy/STRENGTH          Order pixel patterns to create smaller
+                                GIFs at cost of artifacts and noise.
+    - optimize/LEVEL          Optimize output GIFs.
+    - interlace               Turn on interlacing.
+    - crop/X,Y+WxH            or crop/X,Y-X2,Y2.
+                                Crop the image.
+    - rotate/DEGREE           Rotate the image: 90,180,270.
+    - `examples`
+      - lossy/80
+      - /optimize/3/lossy/80/interlace
+      - /resize/400x400/optimize/3/lossy/80/interlace
+      - /resize-fit/400x400/optimize/3/lossy/80/interlace
+      - /resize-colors/32/optimize/3/lossy/80/interlace
+      - /scale/1.5,1.5/optimize/3/lossy/80/interlace
+      - /crop/400,400/optimize/3/lossy/80/interlace
+      - /rotate/90/optimize/3/lossy/80/interlace
+
 
 Qiniu ufop
 ========
@@ -80,9 +94,14 @@ Refer [开发者自定义数据处理程序-快速入门](http://developer.qiniu
   wget http://7xiqcg.com1.z0.glb.clouddn.com/demo.gif?giflossy -qO origin_lossy.gif
 
   ls -lh *.gif
-  -rw-r--r--  1 dylanninin  staff    10M Jan  8 10:37 origin.gif
-  -rw-r--r--  1 dylanninin  staff   1.9M Jan  8 10:37 origin_lossy.gif
+  -rw-r- r-   1 dylanninin  staff    10M Jan  8 10:37 origin.gif
+  -rw-r- r-   1 dylanninin  staff   1.9M Jan  8 10:37 origin_lossy.gif
   ```
+
+- Usage
+
+  - `http://{resource_url}?giflossy`: default with `/optimize/3/lossy/80/interlace`
+  - `http://{resource_url}?giflossy&opt={options}`: see handler options above.
 
 Build from scratch
 ========
