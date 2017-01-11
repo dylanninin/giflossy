@@ -17,5 +17,5 @@ ADD ./opt2cli.py /app/opt2cli.py
 ADD ./path2opt.py /app/path2opt.py
 EXPOSE 9100
 CMD ["/app/main.sh"]
-PUSH dylanninin/giflossy:v3
+PUSH dylanninin/giflossy:v4
 PUSh dylanninin/giflossy:latest

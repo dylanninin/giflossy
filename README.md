@@ -41,8 +41,8 @@ Started
     - /resize/400x400/optimize/3/lossy/80/interlace
     - /resize-fit/400x400/optimize/3/lossy/80/interlace
     - /resize-colors/32/optimize/3/lossy/80/interlace
-    - /scale/1.5,1.5/optimize/3/lossy/80/interlace
-    - /crop/400,400/optimize/3/lossy/80/interlace
+    - /scale/1.1x1.1/optimize/3/lossy/80/interlace
+    - /crop/400,400-600,600/optimize/3/lossy/80/interlace
     - /rotate/90/optimize/3/lossy/80/interlace
 
 

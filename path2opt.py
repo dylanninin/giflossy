@@ -12,11 +12,11 @@ Options:
 
 Example:
     path2opt.py -p /optimize/3/lossy/80/interlace
-    path2opt.py -p /scale/1.5,1.5/optimize/3/lossy/80/interlace
+    path2opt.py -p /scale/1.1x1.1/optimize/3/lossy/80/interlace
     path2opt.py -p /resize/400x400/optimize/3/lossy/80/interlace
     path2opt.py -p /resize-fit/400x400/optimize/3/lossy/80/interlace
     path2opt.py -p /resize-colors/32/optimize/3/lossy/80/interlace
-    path2opt.py -p /crop/400,400/optimize/3/lossy/80/interlace
+    path2opt.py -p /crop/400,400-600,600/optimize/3/lossy/80/interlace
     path2opt.py -p /rotate/90/optimize/3/lossy/80/interlace
     path2opt.py (-h | --help)
 """
@@ -27,7 +27,7 @@ from docopt import docopt
 def is_opt(name):
     """Return True if name if a valid option name, False otherwise.
     """
-    return bool(re.search('[a-zA-Z\-]', name))
+    return bool(re.search('^[a-zA-Z\-]+$', name))
 
 
 if __name__ == '__main__':
