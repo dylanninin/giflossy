@@ -98,10 +98,18 @@ Refer [开发者自定义数据处理程序-快速入门](http://developer.qiniu
   -rw-r- r-   1 dylanninin  staff   1.9M Jan  8 10:37 origin_lossy.gif
   ```
 
-- Usage
+- usage
 
-  - `http://{resource_url}?giflossy`: default with `/optimize/3/lossy/80/interlace`
-  - `http://{resource_url}?giflossy&opt={options}`: see handler options above.
+  - [X] `http://{resource_url}?giflossy`: default with `/optimize/3/lossy/80/interlace`
+  - [ ] `http://{resource_url}?giflossy&opt={options}`: see handler options above.
+
+- apply
+
+  ```shell
+  # You can apply this service since it's protected
+  # - It will work in 5 minutes.
+  qdoractl apply giflossy
+  ```
 
 Build from scratch
 ========
@@ -117,3 +125,4 @@ Reference
 - https://github.com/dylanninin/gifsicle/tree/lossy
 - https://github.com/grammarly/rocker
 - http://developer.qiniu.com/article/dora/ufop/v2/ufop-fast.html
+- http://developer.qiniu.com/article/dora/ufop/v2/qdoractl.html#apply
