@@ -34,7 +34,7 @@ if __name__ == '__main__':
     opts = {}
     args = docopt(__doc__)
     path = args.get('--path') or ''
-    path = path.strip('/').strip('/')
+    path = path.strip('/')
     parts = path.split('/')
     l = len(parts)
     for i, v in enumerate(parts):
